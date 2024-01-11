@@ -31,9 +31,18 @@
         @foreach ($products as $key => $product)
             <tr>
                 <th scope="row">{{$key+1 + (($products->currentPage()-1) * 10)}}</th>
-                <td>{{$product->name}}</td>
+                <td>
+                    <a href="{{route("products.show", $product->id)}}">{{$product->name}}</a>
+                </td>
                 <td>{{$product->created_at}}</td>
-                <td>Edit/Delete</td>
+                <td>
+                    <input type="button" value="Edit" onclick="location.href='{{route("products.edit", $product)}}'"/>
+                    <form action="{{route('products.destroy', $product->id)}}" method="post" style="display:inline-block;">
+                        @method('delete')
+                        @csrf
+                        <input onclick="return confirm('정말로 삭제하겠습니까?')" type="submit" value="delete"/>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>

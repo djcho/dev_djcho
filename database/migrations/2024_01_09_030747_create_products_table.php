@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 64);
             $table->string('content', 256);
+            $table->string('call', 16)->nullable();
             $table->timestamps();
         });
     }

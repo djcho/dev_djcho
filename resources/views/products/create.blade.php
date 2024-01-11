@@ -22,11 +22,15 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" id="name" autocomplete="off">
+            <input type="text" name="name" class="form-control" id="name" autocomplete="off" value="{{old('name')}}">
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea rows="10" cols="40" name="content" class="form-control" id="name" autocomplete="off"></textarea>
+            <textarea rows="10" cols="40" name="content" class="form-control" id="name" autocomplete="off">{{old('content')}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="call" class="form-label">Call</label>
+            <input type="text" name="call" class="form-control" id="call" autocomplete="off" value="{{old('call')}}" maxlength="13">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
+Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('products/store', [ProductController::class, 'store'])->name('products.store');
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+//Laravel 에서 업데이트의 대한 메서드는 Patch 나 Put을 권장한다.
+Route::patch('products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
